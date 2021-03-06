@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Url Shrinker</h2>
+      <form action="/shorturls" method="POST" class="my-4 form-inline">
+        <label for="fullUrl" class="sr-only"> Full Url</label>
+        <input
+          type="url"
+          name="fullurl"
+          required
+          class="form-control col mr-2"
+          placeholder="url"
+          id="fullurl"
+        />
+        <button type="submit" class="btn btn-success">shrink</button>
+      </form>
+
+      <table class="table table-stripped table-responsive col">
+        <thead>
+          <tr>
+            <th>Full Url</th>
+            <th>Short Url</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% shorturls.forEach(url => {%>
+                 <tr>
+            <td>
+              <a href="<% url.full %> "
+                ><%= url.full %> </a
+              >
+            </td>
+            <td><a href="<%= url.short %> "><%= url.short %> </a></td>
+            <td><%= url.clicks %> </td>
+          </tr>
+            <%}); %> 
+         
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
